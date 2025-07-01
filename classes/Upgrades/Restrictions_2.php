@@ -143,7 +143,7 @@ class Restrictions_2 extends \ContentControl\Base\Upgrade {
 			'custom_message'           => '',
 			'redirect_type'            => 'login',
 			'redirect_url'             => '',
-			'conditions'               => '',
+			'conditions'               => [],
 		]);
 
 		$new_restriction_id = wp_insert_post(
@@ -169,7 +169,7 @@ class Restrictions_2 extends \ContentControl\Base\Upgrade {
 			'customMessage'    => $restriction['custom_message'],
 			'redirectType'     => $restriction['redirect_type'],
 			'redirectUrl'      => esc_url_raw( $restriction['redirect_url'] ),
-			'conditions'       => remap_conditions_to_query( $restriction['conditions'] ),
+			'conditions'       => remap_conditions_to_query( (array) $restriction['conditions'] ),
 		], get_default_restriction_settings() );
 
 		$added_meta = add_post_meta( $new_restriction_id, 'restriction_settings', $settings, true );

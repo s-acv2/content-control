@@ -184,7 +184,7 @@ class Restriction {
 			'custom_message'           => '',
 			'redirect_type'            => 'login',
 			'redirect_url'             => '',
-			'conditions'               => '',
+			'conditions'               => [],
 		] );
 
 		$this->data_version = 1;
@@ -215,7 +215,7 @@ class Restriction {
 			'overrideMessage'         => $restriction['override_default_message'],
 			'customMessage'           => $restriction['custom_message'],
 			'showExcerpts'            => $restriction['show_excerpts'],
-			'conditions'              => \ContentControl\remap_conditions_to_query( $restriction['conditions'] ),
+			'conditions'              => \ContentControl\remap_conditions_to_query( (array) $restriction['conditions'] ),
 		];
 
 		$this->settings = $settings;
